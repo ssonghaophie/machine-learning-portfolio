@@ -1,131 +1,22 @@
-# Recommender System
-## First (of two) course projects
+# Recommendation System
 
-* An explanation of the recommender task that you are investigating and why you are 
-  interested in it
-* Information about your dataset and why you selected it
-* An introduction to your recommender system, including how it works, whether you use 
-  PCA or SVD (and why!), and how it selects three _new_ recommendations 
-* A brief discussion about the quality of the recommendations for the two selected 
-  users
+## Introduction
 
-Your report should be self-contained, meaning that all necessary figures should be 
-contained within the documentation. You should also include your value add statement 
-at the end of your report. The report should replace this readme.md file. You should 
-make thoughtful use of [markdown formatting](https://www.markdownguide.org/basic-syntax/), 
-including headings, sub-headings, paragraphs, and different kinds of font styles. 
-There are no page requirements or limits; but if your report is less than 4 paragraphs 
-or more than 20 paragraphs, we should check in about it. 
+My goal for this project is to build and compare two different recommendation system that recommends the anime based on how much the anime is similar to the other anime, and how much the users rated each anime. The former is done by content-based filtering, and the latter is done by collaborative-filtering.
 
-### Part 5 - Value Add Statement
+## Approaches
 
-It is common practice that programmers borrow code from each other and websites 
-like stackoverflow. When you are not sure how to use a function or where to go next 
-with your work, the ability to find code that suits your purpose or that can be 
-extended to fit your needs is an invaluable one. Part of using others' code and 
-ideas responsibly and respectfully includes 1) documenting where ideas and code came 
-from (if not from you and your brain) and 2) articulating what you have done in terms 
-of extending, adapting, or reshaping the code. 
+For content-based filtering, I used the cosine similarity metric to calculate how similar each anime was to one another. Since the metric requires two vectors to be the set of numbers, I had to change all the categorical variables including genre and type into numeric representations by using the binary labeling of 0 and 1. This allowed me to apply cosine similarity, which yields 1 when the two vectors compared are identical to each other and -1 when they are the complete opposite of each other. After calculating it, I built an algorithm that takes and returns 5 anime that have the highest cosine similarity values when compared to the anime that the user searches.
 
-For all projects in this course, I am asking that you write a **Value Add** statement. 
-In this statement, you will clearly articulate:   
-1. What resources you consulted,   
-2. How you applied or adapted the ideas and code from those resources, and 
-3. What new ideas and code you added  
+For collaborative filtering, I preprocessed the data to be a user by anime matrix, so that it contains the information on the ratings of different users on different anime. Since none of the users watched all the anime, there were a lot of missing fields, which I had to store the information of so that I don’t end up recommending the anime that the user already rated and thus watched.
 
-In summary, the value add statement should be explicit where the ideas and code you 
-consulted end and where your contributions begin. See _A few notes on grading coding_ 
-_elements_ below for examples of low and high value add scenarios.
+Then, I had to decide on which dimension reduction method I will use from PCA and SVD. Because my data was very large, I had some problems regarding the computation speed when running the dimension reduction algorithm. It was also very sparse with a lot of missing values. Therefore, I went with truncated SVD which works better on sparse data and can reduce the running time significantly. SVD also doesn’t require the data to be normalized, making it more accessible. After performing SVD, I built an algorithm that takes the id of the user and returns 3 anime that have the highest predicted rating.  
 
-You should include the value add statement at the bottom of the readme file along with 
-the citations for all consulted sources
+## Conclusion
 
-## Submitting your Work
+According to the recommendation results, it looked like the recommendation from the content-based filtering model is a lot more explicitly similar in the genre, the number of episodes, and the types of anime that are recommended. It is almost the same as going through the list of anime and searching for the anime with all the tags matching with the one we are comparing to because the recommendations were very straightforward with almost all of the tags being identical. 
 
-Your project will contain a number of files including:   
-* At least one data file 
-* At least one python file implementing your system  
-* One python file with your tests  
-* At least one data file 
-* Documentation of your tests have passing both locally and on GitHub Actions. 
-* A readme file with your report and value add statement  
-* A `.gitignore` file
+However, the recommendations using collaborative filtering were less straightforward, having some anime different genres from the ones that the user rated the highest (rate of 10). This is because all of the rates are considered, so although one genre can be rated high, the anime with the same genre could also be rated low by the user depending on the quality of the anime and other aspects. The recommendations are still very reasonable because although there is more diversity, the key genres from the high-rated anime from the user were still considered. This algorithm might be better because it is more realistic. In the real life, not a lot of anime watchers would like to watch hundreds of anime of a fixed genre, type, and number of episodes. It makes more sense that the user will explore different anime with diverse genres, and like one anime and doesn’t like another from the same genre depending on other aspects of them. Therefore, I like the idea of introducing more diversity using collaborative filtering.
 
-You may also include notebooks or other scratch work with your submission, but place 
-these files inside a folder called `scratch`. 
+However, because there are not many variables stored in this data, the relationship or similarity of collaborative filtering can also be seen quite explicitly just by looking at the columns of the data. Later, I wish I can explore a more complex dataset with more information including the overview, production company, author, voice actors, etc so that the recommendation can be less obvious in our eyes. I also want to explore other recommendation algorithms that have more strength in the real life, possibly using deep learning.
 
-## Feedback
-
- Topic                               | No Attempt | Partial | Complete | 
------------------------------        |------------|---------|----------|
-Build user-item matrix               |            |         |          |  
-Discussion of data                   |            |         |          |  
-Explaning specific recommender task  |            |         |          |
-Explaining context for data and task |            |         |          |
-Implementing Recommendation system   |            |         |          |   
-Discussing PCA vs SVD                |            |         |          | 
-Discussing three recommendations     |            |         |          |
-Unit Tests                           |            |         |          |
-Local tests                          |            |         |          |
-GitHub Actions                       |            |         |          |
-
-
-Topic                                | Have questions about| Could again without help | 
------------------------------        |---------------------|--------------------------|
-Build user-item matrix               |                     |                          |  
-Discussion of data                   |                     |                          |  
-Explaning specific recommender task  |                     |                          |
-Explaining context for data and task |                     |                          |
-Implementing Recommendation system   |                     |                          |   
-Discussing PCA vs SVD                |                     |                          | 
-Discussing three recommendations     |                     |                          |
-Unit Tests                           |                     |                          |
-Local tests                          |                     |                          |
-GitHub Actions                       |                     |                          |
-
-
-
-### A few notes on possible project "outcomes"
-
-In any project, while a successful implementation is important, articulating your 
-contributions is equally important. The feedback for this project attempts 
-to codify these ideas. As such, the grading for a few extreme approaches to this 
-project will be explained: 
-
-* **Example 1: System works, but code is entirely from other sources** - In this first 
-  example, the student has a working system, but clearly acknowledges that the code is from 
-  a blog post with only surface level changes (like variable names) to adapt the code to the 
-  student's chosen data. In this case, the project would be considered to be "half" successful
-  for the working code since it functions but because most of the ideas are not the student's 
-  own (or phrased another way, project has low "value add").
-* **Example 2: System does not fully work, but code is entirely of the students creation**  
-  **(and no sources were consulted)** - In this second example, the student used only class 
-  resources (like the books and labs) to create their system that unfortunately does not 
-  quite work. In this case, the project also would be considered to be "half" successful  
-  non-working code since most of the ideas are the student's own (i.e. project has high "value
-  add"). 
-
-Having a successful implementation is only part of any project; explaining what your goals 
-are, why they are important or interesting, and how you approached the achieving those 
-goals are critical. The feedback for these projects balances the coding elements with the 
-written ones. For example: 
-
-* **Example 3: System works, but the readme file is not coherent, reading like a sequence** 
-  **of events** - In this third example, we are only commenting on the grading of the 50 points 
-  for the written elements. Here the project's readme follows a chronological retelling of 
-  the coding; something like: "First I tried X and it didn't work. Then I tried Y and it did 
-  better. Then this other thing was added and I like the results." In this project's write up, 
-  there is little effort to educate the reader about the project's goals and methods, and as 
-  such, the project would be considered less than "half" of a success (as the results are 
-  presented in an inaccessible manner), assuming the readme file uses good 
-  markdown styling and contains all the minimal elements for the report. 
-
-## Reminders
-* Don't forget to create a `.gitignore` for any notebook checkpoints that you create. 
-* Any import statements should be at the top of your python files or in the first 
-code block of a notebook. 
-
-### Resources consulted 
-
-* [Basic Syntax from Markdown Guide](https://www.markdownguide.org/basic-syntax/) 
-* Value add statement based on an idea from Prof. Nick Howe (Smith College)
