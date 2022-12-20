@@ -10,21 +10,21 @@ The skills I have in machine learning:
       - Polynomial Regression
     - Classification
       - Logistic Regression
-      - Support Vector Machine (SVM)
+      - **Support Vector Machine (SVM)**
       - K-Nearest Neighborhood (KNN)
-      - Decision Tree
+      - **Decision Tree**
       - Random Forest 
   - Unsupervised Learning
     - Dimension Reduction
       - Principal Component Analysis (PCA)
-      - Singular Value Decomposition (SVD)
+      - **Singular Value Decomposition (SVD)**
     - Clustering
       - K-Means
   - Deep Learning
-    - Convolutional Neural Network (CNN)
+    - **Convolutional Neural Network (CNN)**
 - Others:
   - Gradient Descent for optimization
-  - Cross-Validation for train-test data
+  - **Cross-Validation for train-test data**
 
 Among these skills, I’m more confident in utilizing KNN, Decision Tree, PCA, SVD, K-Means, Gradient Descent, and Cross-Validation algorithms because I have experience in implementing these from scratch using Python. 
 
