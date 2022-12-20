@@ -20,3 +20,12 @@ However, the recommendations using collaborative filtering were less straightfor
 
 However, because there are not many variables stored in this data, the relationship or similarity of collaborative filtering can also be seen quite explicitly just by looking at the columns of the data. Later, I wish I can explore a more complex dataset with more information including the overview, production company, author, voice actors, etc so that the recommendation can be less obvious in our eyes. I also want to explore other recommendation algorithms that have more strength in the real life, possibly using deep learning.
 
+### Resources:
+1. Data Source: https://www.kaggle.com/datasets/CooperUnion/anime-recommendations-database
+2. About Content-based Filtering: https://www.kaggle.com/code/rounakbanik/movie-recommender-systems/notebook
+3. About weighted rating: https://www.quora.com/How-does-IMDbs-rating-system-work
+4. About Collaborative Filtering: 
+  - Lab 5 & 6: PCA, SVD
+  - Project 1: https://github.com/comp-machine-learning-fall2022/project-1-ssonghaophie
+5. About argsort() and sort(): https://stackoverflow.com/questions/10337533/a-fast-way-to-find-the-largest-n-elements-in-an-numpy-array
+6. About formatting string: https://pyformat.info/
