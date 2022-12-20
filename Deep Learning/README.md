@@ -15,3 +15,12 @@ In the end, all of the train-validation accuracy and loss started to converge in
 
 ## Conclusion
 It was great to complete an image classification task successfully, because presenting the image data as the matrix of numbers sounds challenging at first because it's not what we've trained to think of as. This project helped me to understand what CNN is, and how I can apply it in classifying image data. For my next project, I would like to further investigate on how other settings for CNN layers can change the model accuracy. I also want to extend on this anime character thread to explore a way to generate new image from the information gained from the image data I have, known as Generative Adversarial Networks (GAN). This backward transition from supervised learning to an unsupervised learning sounds very interesting, although generating new data yields a lot of ethical cocerns regarding copyright, portrait right, challenges in distinguishing the real data from the fake one, etc. I aknowledge that I should be aware of these and clearly understand what I'm trying to do before I enter into this field.
+
+### Resources
+
+1) Data Source: https://github.com/developer0hye/Custom-CNN-based-Image-Classification-in-PyTorch
+2) About loading custom image data in tensorflow: https://www.tensorflow.org/api_docs/python/tf/keras/utils/image_dataset_from_directory
+3) About CNN and neural layers: Lab 22 https://colab.research.google.com/drive/15ZWa44ow2bWmQOWMfjZeHAdXJFBx_jSR?usp=sharing#scrollTo=EMguodqFISRa
+4) About Tensorflow built-in methods for using CNN: https://www.tensorflow.org/tutorials/images/cnn https://www.tensorflow.org/tutorials/images/classification
+5) About optimizer: https://machinelearningmastery.com/adam-optimization-algorithm-for-deep-learning/#:~:text=Adam%20is%20a%20replacement%20optimization,sparse%20gradients%20on%20noisy%20problems
+6) About accuracy and loss: https://datascience.stackexchange.com/questions/42599/what-is-the-relationship-between-the-accuracy-and-the-loss-in-deep-learning
