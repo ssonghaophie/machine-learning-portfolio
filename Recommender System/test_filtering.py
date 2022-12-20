@@ -54,7 +54,7 @@ def test_weighted_rating_type():
 
 # shape check for weighted_rating
 def test_recommend_shape():
-    anime["weighted_rating"] = anime.apply(project1.weighted_rating, axis=1, args=(10000,anime.rating.mean()))
+    anime["weighted_rating"] = anime.apply(filtering.weighted_rating, axis=1, args=(10000,anime.rating.mean()))
     anime.drop(["rating", "members"], axis=1, inplace=True)
     result = filtering.recommend(anime, anime_index,"Kimi no Na wa.", cos_sim)
     expected = (6, 5)
