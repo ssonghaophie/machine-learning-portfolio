@@ -28,4 +28,4 @@ jobs:
     - name: Recommendation system with pytest
       run: |
         pytest
-      working-directory: Element 1
+      working-directory: Recommender System
