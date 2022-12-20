@@ -29,3 +29,7 @@ jobs:
       run: |
         pytest
       working-directory: Recommender System
+    - name: Classification with pytest
+      run: |
+        pytest
+      working-directory: Classification
